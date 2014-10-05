@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+    </head>
+    <body>
+        Hello World!
+        <br />
+        <form>
+            Food: 
+            <input type="text" id="foodItem" /><br />
+            Alergens: 
+            <input type="text" id="alergens" /><br />
+            Location: 
+            <input type="text" id="location" /><br />
+            <input type="button" id="submitButton" value="Submit" />
+        </form>
+        
+        
+        
+    </body>
+
+    <script type="text/javascript" src="setup.js"></script>
+    <script type="text/javascript">
+        /*
+        var TestObject = Parse.Object.extend("TestObject");
+        var testObject = new TestObject();
+        testObject.save({foo: "bar"}).then(function(object) {
+          alert("yay! it worked");
+        });
+        */
+        
+        var saveMessage = function(foodItem, alergens, coordinates){
+            var message = new Parse.Object("Message");
+            message.set("foodItem", foodItem);
+            message.set("alergens", alergens);
+            message.set("coordinates", coordinates);
+            message.save().then(function() {
+                alert("Added " + foodItem + " which contains: " + alergens + " at " + coordinates);
+            }, function(err){
+                console.log(err);
+            });
+        }
+        
+        // Attach handler to the "Send" button
+        $("#sendButton").click(function() {
+          // Pull the values out of the HTML inputs
+          var username = $("#foodItem").val();
+          var messageBody = $("#message").val();
+          var color = $("#colors").val();
+          if (messageBody.length === 0) {
+            return false;
+          }
+
+          // Take those values and actually save the message
+          saveMessage(username, messageBody);
+
+          // Clean up after ourselves - reset our input and reload the chat
+          $("#message").val("");
+          getMessages();
+        });
+        
+        
+/*
+// IMPLEMENT ME:
+// 
+// Use a Parse Query to get objects of type "Message". Start off with a limit
+// of 10 items, then experiment with Query conditions to grab different
+// messages other folks have created.
+//
+// Documentation: https://parse.com/docs/js_guide#queries-basic
+var getMessages = function() {
+  var q = new Parse.Query("Message");
+  q.limit(10);
+  q.descending("createdAt");
+  q.find().then(function(messages) {
+    messages.reverse();
+    displayMessages(messages);
+  });
+
+  // We've defined a success handler for you! After you've constructed your
+  // query, pass it `displayMessages` (defined in setup.js) to handle the
+  // rendering of the messages.
+};
+
+// IMPLEMENT ME:
+// 
+// Create a new Parse Object (with "Message" as the class name) and use the
+// "username" and "messageBody" parameters to save an object.
+//
+// Documentation: https://parse.com/docs/js_guide#objects
+var saveMessage = function(username, messageBody) {
+  var m = new Parse.Object("Message");
+  m.set("username", username);
+  m.set("body", messageBody);
+  m.save().then(function() {
+    getMessages();
+  }, function(err) {
+    console.log(err);
+  });
+
+  // Note that our .save() function is asynchronous! Instead of passing it a
+  // callback directly, here's how you'd use a Promise to attach behavior on
+  // success or failure:
+  //
+  // object.save().then(
+  //   function(object) {
+  //     console.log("Saved!");
+  //     console.log(object);
+  //   }, function(error) {
+  //     console.log("Error!");
+  //     console.log(error);
+  //   });
+  //
+  // (Read more: http://blog.parse.com/2013/01/29/whats-so-great-about-javascript-promises/))
+};
+
+// Attach handler to the "Send" button
+$("#send_button").click(function() {
+  // Pull the values out of the HTML inputs
+  var username = $("#username").val();
+  var messageBody = $("#message").val();
+  var color = $("#colors").val();
+  if (messageBody.length === 0) {
+    return false;
+  }
+
+  // Take those values and actually save the message
+  saveMessage(username, messageBody);
+
+  // Clean up after ourselves - reset our input and reload the chat
+  $("#message").val("");
+  getMessages();
+});
+
+
+// Attach handler to "Reload" link
+$("#reload").click(getMessages);
+// Get messages on load
+getMessages();
+*/        
+        
+        
+        
+    </script>
+
+</html>

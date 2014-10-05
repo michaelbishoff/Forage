@@ -8,6 +8,9 @@
       <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script src="js/vendor/modernizr.js"></script>
+      <link rel="stylesheet" href="css/foodmap.css" />
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+      <script src="foodMarker.js"></script>
     </head>
     <body onload="getMessages()">
    <!-- Top slide -->
@@ -21,6 +24,15 @@
       </div> 
 
         <br />
+        
+      <div id="">
+      <input id="address" type="textbox" value="Massachusetts, USA">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+      </div>
+      <div class="map" id="map-canvas"></div>
+        
+        <br />
+        
       <div class="row">
         <div class="large-12 medium-12 text-center columns">  
         <form>

@@ -86,6 +86,9 @@ function attachInfo(marker, n) {
 
       infowindow.setContent(iWC);
       infowindow.open(map,marker);
+      
+      var thisAddress = address[0] + ', ' + address[1] + ', ' + address[2] + ' ' + address[3];
+      setAddress(thisAddress);
   });
 }
 

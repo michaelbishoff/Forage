@@ -1,4 +1,4 @@
-var you;
+var map;
 var geocoder;
 
 function initialize() {
@@ -8,7 +8,8 @@ function initialize() {
     zoom: 16,
     center: MIT
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+                                mapOptions);
 
 var codeAddress = function() {
   var address = document.getElementById('address').value;
@@ -34,13 +35,29 @@ var codeAddress = function() {
  */
 
 var foodMarkers = [
-        ["LaVerde's Market", 42.359102, -71.094668],
-        ["Star Market", 42.361702, -71.100590],
-        ["Shalimar", 42.365095, -71.102607],
-        ["Whole Foods", 42.368012, -71.102392],
-        ["7-11", 42.363161, -71.093423]
+	["LaVerde's Market", 42.359102, -71.094668, ['84 Massachusetts Ave','Cambridge', 'MA', 02139]],
+	["Star Market", 42.361702, -71.100590, ['20 Sidney St','Cambridge', 'MA', 02139]],
+	["Shalimar", 42.365095, -71.102607, ['571 Massachusetts Ave','Cambridge', 'MA', 02139]],
+	["Whole Foods", 42.368012, -71.102392, ['115 Prospect St','Cambridge', 'MA', 02139]],
+	["7-11", 42.363161, -71.093423, ['600 Technology Square','Cambridge', 'MA', 02139]]
   ];
 
+var cat = "cat.png";
+var catPos = new google.maps.LatLng(42.353996, -71.070163);
+var catMark = new google.maps.Marker({
+  position: catPos,
+  map: map,
+  title: 'cat'
+});
+/*
+google.maps.event.addListener(catMark, 'click', function(){
+  var infowindow = new google.maps.InfoWindow(
+      { content: 'MEOW!',
+        size: new google.maps.Size(500,500)
+      });
+  infowindow.open(map, catMark);
+});
+*/
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
     var food = locations[i];
@@ -50,7 +67,26 @@ function setMarkers(map, locations) {
         map: map,
         title: food[0]
     });
+    attachInfo(marker, i);
   }
+}
+
+function attachInfo(marker, n) {
+  var locker = foodMarkers[n];
+  var address = locker[3];
+  var infowindow = new google.maps.InfoWindow(
+      { content: locker[0],
+        size: new google.maps.Size(500,500)
+      });
+  google.maps.event.addListener(marker, 'click', function() {
+      var iWC = infowindow.getContent();
+
+      iWC = '<div><h1 font-size: >' + locker[0]  + '</h1><div><p>' + address[0] + '</p><p>'
+	    + address[1] + ', ' + address[2] + ' ' + address[3] + '</p></div></div>';
+
+      infowindow.setContent(iWC);
+      infowindow.open(map,marker);
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

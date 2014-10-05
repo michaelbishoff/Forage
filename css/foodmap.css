@@ -1,15 +1,13 @@
 html, body, #map-canvas {
-  height: 415px;
+  height: 450px;
   width:100%;
-  margin: 0px;
-  padding: 0px
-  top:-20px;
+  padding: 0px;
+  top:-17px;
 }
 
 
 #panel {
   position: absolute;
-  top: 5px;
   left: 50%;
   margin-left: -180px;
   z-index: 0;

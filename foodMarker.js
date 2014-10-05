@@ -25,6 +25,7 @@ var codeAddress = function() {
     }
   });
 }
+ addCat(map);
  setMarkers(map, foodMarkers);
 }
 
@@ -42,13 +43,24 @@ var foodMarkers = [
 	["7-11", 42.363161, -71.093423, ['600 Technology Square','Cambridge', 'MA', 02139]]
   ];
 
-var cat = "cat.png";
-var catPos = new google.maps.LatLng(42.353996, -71.070163);
-var catMark = new google.maps.Marker({
-  position: catPos,
-  map: map,
-  title: 'cat'
+function addCat(map) {
+  var cat = "cat.png";
+  var catPos = new google.maps.LatLng(42.353996, -71.070163);
+  var catMark = new google.maps.Marker({
+    position: catPos,
+    map: map,
+    icon: cat,
+    title: 'cat'
+    google.maps.event.addListener(catMark, 'click', function(){
+  var infowindow = new google.maps.InfoWindow(
+      { content: 'MEOW!',
+        size: new google.maps.Size(500,500)
+      });
+  infowindow.open(map, catMark);
 });
+  });
+}
+
 /*
 google.maps.event.addListener(catMark, 'click', function(){
   var infowindow = new google.maps.InfoWindow(

@@ -2,10 +2,10 @@
     header("content-type: text/xml");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     
-    if (strpos($_REQUEST['Body'],'food') !== false) {
+    if (strpos(strtolower($_REQUEST['Body']),'food') !== false) {
         sendText();
     }
-    else if (strpos($_REQUEST['Body'],'forage') !== false) {
+    else if (strpos(strtolower($_REQUEST['Body']),'forage') !== false) {
         sendText();
     }
 

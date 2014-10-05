@@ -5,7 +5,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var MIT = new google.maps.LatLng(42.3598,-71.0921);
   var mapOptions = {
-    zoom: 17,
+    zoom: 16,
     center: MIT
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);

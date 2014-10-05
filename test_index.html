@@ -102,30 +102,28 @@
             }
             
             var displayMessages = function(messages) {
-            var messagesDiv = $("#messages");
-            messagesDiv.hide().empty().remove();
-            $.each(messages, function(_, message) {
-                var foodItemClass = "foodItem";
+                var messagesDiv = $("#messages");
+                messagesDiv.hide().empty().remove();
+                $.each(messages, function(_, message) {
+                    var foodItemClass = "foodItem";
 
-                // Simple and straightforward, but suboptimal
-                var row = [ "<p><span class='", foodItemClass, "'>",
-                            " [",
-                            message.createdAt.getHours(),
-                            ":",
-                            message.createdAt.getMinutes(),
-                            "] ",
-                            message.get("foodItem"),
-                            " contains ",
-                            message.get("alergens"),
-                            " at ",
-                            message.get("address"),
-                            "</span><span class='body'>",
-                            message.get("body"),
-                            "</span></p>" ].join("");
-                messagesDiv.append(row);
-              });
-              $("#display").append(messagesDiv);
-              messagesDiv.fadeIn();
+                    // Simple and straightforward, but suboptimal
+                    var row = [ "<p><span class='", foodItemClass, "'>",
+                                " [",
+                                message.createdAt.getHours(),
+                                ":",
+                                message.createdAt.getMinutes(),
+                                "] ",
+                                message.get("foodItem"),
+                                " contains ",
+                                message.get("alergens"),
+                                " at ",
+                                message.get("address"),
+                                "</span></p>" ].join("");
+                    messagesDiv.append(row);
+                  });
+                  $("#display").append(messagesDiv);
+                  messagesDiv.fadeIn();
             };
             
             

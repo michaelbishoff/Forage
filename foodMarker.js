@@ -8,9 +8,9 @@ function initialize() {
     zoom: 15,
     center: MIT
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-                                mapOptions);
-  function codeAddress() {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+var codeAddress = function() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -24,7 +24,7 @@ function initialize() {
     }
   });
 }
- //setMarkers(map, foodMarkers);
+ setMarkers(map, foodMarkers);
 }
 
 /**
@@ -32,30 +32,25 @@ function initialize() {
  * the order in which these markers should display on top of each
  * other.
  */
-/*
-var food = [];
 
-var foodPoints = function(name, allergies, streetNumber, address, city, state, zip) {
-      name: name,
-      allergies: allergies,
-      streetNumber: streetNumber,
-      address: address,
-      city: city,
-      state: state,
-      zip: zip,
-  };
+var foodMarkers = [
+        ["LaVerde's Market", 42.359102, -71.094668],
+        ["Star Market", 42.361702, -71.100590],
+        ["Shalimar", 42.365095, -71.102607],
+        ["Whole Foods", 42.368012, -71.102392],
+        ["7-11", 42.363161, -71.093423]
+  ];
 
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
     var food = locations[i];
-    var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
+    var myLatLng = new google.maps.LatLng(food[1], food[2]);
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        shape: shape,
-        title: food.name,
+        title: food[0]
     });
   }
-}*/
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);

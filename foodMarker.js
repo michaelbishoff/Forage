@@ -10,7 +10,7 @@ function initialize() {
   }
   map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
-}
+
 var codeAddress = function() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
@@ -25,7 +25,7 @@ var codeAddress = function() {
     }
   });
 }
-    addCat(map);
+addCat(map);
  setMarkers(map, foodMarkers);
 }
 

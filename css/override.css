@@ -1,4 +1,6 @@
 .home {
 	width:100%;
+	box-shadow: 0 2.25px 1px #111;
 	background:#282828;
+	margin:auto;
 }

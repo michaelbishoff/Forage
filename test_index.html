@@ -11,9 +11,15 @@
     </head>
     <body onload="getMessages()">
    <!-- Top slide -->
-      <div class="home">
+   <!-- Large logo will only display on larger screens -->
+      <div class="home hide-for-small">
         <img src="img/logo.png" />
       </div>
+
+      <div class="home show-for-small"><br>
+        <img src="img/logo2.png"></div><br />
+      </div> 
+
         <br />
       <div class="row">
         <div class="large-12 medium-12 text-center columns">  
@@ -26,7 +32,7 @@
             <input type="checkbox" id="alergens[]" name="alergens3" value="Milk">Milk</input>
             Adress: 
             <input class="radius" type="text" id="address" /><br />
-            <input class="radius" type="button" id="submitButton" value="Submit" />
+            <input class=" button radius" type="button" id="submitButton" value="Submit" />
         </form>
         </div>
       </div>

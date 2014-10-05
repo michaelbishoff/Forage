@@ -25,7 +25,6 @@ var codeAddress = function() {
     }
   });
 }
- addCat(map);
  setMarkers(map, foodMarkers);
 }
 
@@ -51,6 +50,7 @@ function addCat(map) {
     map: map,
     icon: cat,
     title: 'cat'
+  });
     google.maps.event.addListener(catMark, 'click', function(){
   var infowindow = new google.maps.InfoWindow(
       { content: 'MEOW!',
@@ -58,9 +58,7 @@ function addCat(map) {
       });
   infowindow.open(map, catMark);
 });
-  });
 }
-
 /*
 google.maps.event.addListener(catMark, 'click', function(){
   var infowindow = new google.maps.InfoWindow(

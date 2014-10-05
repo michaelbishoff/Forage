@@ -44,7 +44,7 @@ var foodMarkers = [
   ];
 
 function addCat(map) {
-  var cat = "cat.png";
+  var cat = "img/cat.png";
   var catPos = new google.maps.LatLng(42.353996, -71.070163);
   var catMark = new google.maps.Marker({
     position: catPos,

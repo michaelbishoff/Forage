@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+        <script type="text/javascript" src="setup.js"></script>
+    </head>
+    
+    <body>
+        Hello World!<br />
+        <input type="button" value="Save" onclick="saveMessage()" /><br />
+        <input type="button" value="Display" onclick="displayMessage()" /><br />
+        <input type="button" value="Query" onclick="queryDatabase()" /><br />
+        
+    </body>
+    
+    
+    <div id="display">
+        <div id="messages">
+
+        </div>
+    </div>
+
+    
+    <script type="text/javascript">
+        var saveMessage = function(){
+            var message = new Parse.Object("Message");
+            message.set("foodItem", "Apples");
+            message.set("alergens", "Milk");
+            message.set("address", "Test");
+            message.save().then(function() {
+//                    alert("Added " + foodItem + " which contains: " + alergens + " at " + address);
+            }, function(err){
+                alert("Error");
+                console.log(err);
+            });
+        }
+        
+        var displayMessages = function(messages) {
+            var messagesDiv = $("#messages");
+            messagesDiv.hide().empty().remove();
+            $.each(messages, function(_, message) {
+                var foodItemClass = "foodItem";
+
+                // Simple and straightforward, but suboptimal
+                var row = [ "<p><span class='", foodItemClass, "'>",
+                            " [",
+                            message.createdAt.getHours(),
+                            ":",
+                            message.createdAt.getMinutes(),
+                            "] ",
+                            message.get("foodItem"),
+                            " contains ",
+                            message.get("alergens"),
+                            " at ",
+                            message.get("address"),
+                            "</span></p>" ].join("");
+                messagesDiv.append(row);
+              });
+              $("#display").append(messagesDiv);
+              messagesDiv.fadeIn();
+            };
+            
+        
+        function queryDatabase(){
+            // Assume Parse.Object myPost was previously created.
+//            var query = new Parse.Query(Comment);
+//            query.equalTo("address", "Test");
+//            query.find({
+//              success: function() {
+//                // comments now contains the comments for myPost
+//                displayMessages(m  
+//              }
+//            });
+            var Messages = Parse.Object("Messages");
+            var query = new Parse.Query(Messages);
+            query.equalTo("address", "Test");
+            query.find({
+              success: function(object) {
+                // Successfully retrieved the object.
+                  echo(object);
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+              }
+            });
+
+        }
+    
+    
+    </script>
+
+
+</html>

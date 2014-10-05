@@ -88,7 +88,7 @@
         </script>
         <script type="text/javascript" src="setup.js"></script>
         <script type="text/javascript">
-
+            
             /*
             var TestObject = Parse.Object.extend("TestObject");
             var testObject = new TestObject();
@@ -96,6 +96,8 @@
               alert("yay! it worked");
             });
             */
+            
+            var address = '';
             
             var getMessages = function() {
                 var q = new Parse.Query("Message");
@@ -146,6 +148,9 @@
             };
             
             
+            var setAddress = function(thisAddress) {
+                address = thisAddress;
+            }
 
             // Attach handler to the "Send" button
             $("#submitButton").click(function() {
@@ -172,7 +177,8 @@
                   }
               }
               
-              var address = $("#address").val();
+              //var address = $("#address").val();
+              
               if (foodItem.length === 0) {
                 return false;
               }
@@ -186,7 +192,8 @@
               });
                 
               $("#foodItem").val("");
-              $("#address").val("");
+              // $("#address").val("");
+              address = "";
                 
               getMessages();
             });

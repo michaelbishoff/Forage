@@ -7,12 +7,12 @@
         <br />
         <form>
             Food: 
-            <input type="text" name="foodItem" /><br />
+            <input type="text" id="foodItem" /><br />
             Alergens: 
-            <input type="text" name="alergens" /><br />
+            <input type="text" id="alergens" /><br />
             Location: 
-            <input type="text" name="location" /><br />
-            <input type="button" name="submitButton" onclick="saveMessage(foodItem, alergens, location)">Submit!</input>
+            <input type="text" id="location" /><br />
+            <input type="button" id="submitButton" value="Submit" />
         </form>
         
         
@@ -40,6 +40,24 @@
                 console.log(err);
             });
         }
+        
+        // Attach handler to the "Send" button
+        $("#sendButton").click(function() {
+          // Pull the values out of the HTML inputs
+          var username = $("#foodItem").val();
+          var messageBody = $("#message").val();
+          var color = $("#colors").val();
+          if (messageBody.length === 0) {
+            return false;
+          }
+
+          // Take those values and actually save the message
+          saveMessage(username, messageBody);
+
+          // Clean up after ourselves - reset our input and reload the chat
+          $("#message").val("");
+          getMessages();
+        });
         
         
 /*

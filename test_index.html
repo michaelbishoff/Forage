@@ -5,6 +5,7 @@
       <title>Forage!</title>
       <link rel="stylesheet" href="css/foundation.css" />
       <link rel="stylesheet" href="css/override.css" />
+      <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
       <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script src="js/vendor/modernizr.js"></script>
@@ -15,17 +16,34 @@
     <body onload="getMessages()">
    <!-- Top slide -->
    <!-- Large logo will only display on larger screens -->
-      <div class="home hide-for-small">
-        <img src="img/logo.png" />
-      </div>
+   <div class="home hide-for-small">
+    <img src="img/logo.png" />
+  </div>
 
-      <div class="home show-for-small"><br>
-        <img src="img/logo2.png"><br />
-      </div> 
+  <div class="home show-for-small"><br>
+    <img src="img/logo2.png"><br />
+  </div> 
 
-      <button id="big-button" >
-      </button>
-        
+  <a href="#map-canvas"><button id="big-button"><h4 style="color:white; line-height:0.99%">Let's go!</h4>
+  </button></a>
+
+  <script>
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+      </script>
+
       <!--<div id="">
       <input id="address" type="textbox" value="Massachusetts, USA">
       <input type="button" value="Geocode" onclick="codeAddress()">
@@ -37,14 +55,14 @@
       <div class="row">
         <div class="large-12 medium-12 text-center columns">  
         <form>
-            Tell us what food you're dropping off. 
-            <input class="radius" type="text" id="foodItem" /><br />
-            <h3>Include information about dietary restrictions. </h3><br />
+            <h4>Tell us what food you're dropping off.</h4> 
+            <input class="small radius" type="text" id="foodItem" /><br />
+            <h4>Include information about dietary restrictions. </h4><br />
             <input type="checkbox" id="alergens[]" name="alergens1" value="Nuts">Nuts</input>
             <input type="checkbox" id="alergens[]" name="alergens2" value="Pork">Pork</input>
             <input type="checkbox" id="alergens[]" name="alergens3" value="Milk">Milk</input>
             Adress: 
-            <input class="radius" type="text" id="address" /><br />
+            <input class="small radius" type="text" id="address" /><br />
             <input class=" button radius" type="button" id="submitButton" value="Submit" />
         </form>
         </div>

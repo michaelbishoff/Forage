@@ -1,24 +1,51 @@
-<html>
+<html class="no-js" lang="en">
     <head>
-        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+      <title>Forage!</title>
+      <link rel="stylesheet" href="css/foundation.css" />
+      <link rel="stylesheet" href="css/override.css" />
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script src="js/vendor/modernizr.js"></script>
     </head>
     <body onload="getMessages()">
-        Hello World!
-        <br />
+    
+    
+    <!-- Top slide -- >
+     
+      <div class="home">
+        <img src="img/logo.png" />
+      </div>
+
+
+
+    <!-- Put the fancy pretty map here -->
+
+
+
+    <!-- Form -->
+      <div class="row">
+        <div class="large-12 medium-12 text-center columns">  
         <form>
-            Food: 
-            <input type="text" id="foodItem" /><br />
-            Alergens: <br />
-            <input type="checkbox" id="alergens[]" name="alergens1" value="Nuts">Nuts</input><br />
-            <input type="checkbox" id="alergens[]" name="alergens2" value="Pork">Pork</input><br />
-            <input type="checkbox" id="alergens[]" name="alergens3" value="Milk">Milk</input><br />
+            Tell us what food you're dropping off. 
+            <input class="radius" type="text" id="foodItem" /><br />
+            <h3>Include information about dietary restrictions. </h3><br />
+            <input type="checkbox" id="alergens[]" name="alergens1" value="Nuts">Nuts</input>
+            <input type="checkbox" id="alergens[]" name="alergens2" value="Pork">Pork</input>
+            <input type="checkbox" id="alergens[]" name="alergens3" value="Milk">Milk</input>
             Adress: 
-            <input type="text" id="address" /><br />
-            <input type="button" id="submitButton" value="Submit" />
+            <input class="radius" type="text" id="address" /><br />
+            <input class="radius" type="button" id="submitButton" value="Submit" />
         </form>
+        </div>
+      </div>
         <br />
         
+
+
+      <!-- for our eyes only?? :) -->
+
         <div id="display">
             <div id="messages">
 

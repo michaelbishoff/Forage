@@ -10,7 +10,7 @@ function initialize() {
   }
   map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
-
+}
 var codeAddress = function() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
@@ -25,6 +25,7 @@ var codeAddress = function() {
     }
   });
 }
+    addCat(map);
  setMarkers(map, foodMarkers);
 }
 
@@ -59,6 +60,7 @@ function addCat(map) {
   infowindow.open(map, catMark);
 });
 }
+
 /*
 google.maps.event.addListener(catMark, 'click', function(){
   var infowindow = new google.maps.InfoWindow(
